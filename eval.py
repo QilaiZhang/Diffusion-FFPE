@@ -7,8 +7,8 @@ from cleanfid.fid import build_feature_extractor
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Script for calculating statistics.")
-    parser.add_argument("--data_path", type=str, default="/mnt_ljw/fro2ffpe_projects/EGSDE-master/runs/frozen2ffpe/fid_down_16/")
-    parser.add_argument("--ref_path", type=str, default="/mnt_ljw/fro2ffpe_projects/data/testB_statistic.npz")
+    parser.add_argument("--data_path", type=str, default="TEST_FFPE_PATH")
+    parser.add_argument("--ref_path", type=str, default="testB_statistic.npz")
     parser.add_argument("--save-stats", action='store_true', default=False)
     parser.add_argument("--fid", action='store_true', default=True)
     parser.add_argument("--kid", action='store_true', default=False)

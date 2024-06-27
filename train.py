@@ -25,19 +25,15 @@ def parse_args_training():
     parser = argparse.ArgumentParser(description="Script for training Diffusion-FFPE.")
 
     # args for the model
-    parser.add_argument("--model_path", type=str, default="/mnt_ljw/fro2ffpe_projects/img2img-turbo-main/sd-turbo/sd-turbo")
-    # parser.add_argument("--model_path", type=str, default="stabilityai/sd-turbo")
+    parser.add_argument("--model_path", type=str, default="stabilityai/sd-turbo")
     parser.add_argument("--lora_rank_unet", default=128, type=int)
     parser.add_argument("--lora_rank_vae", default=4, type=int)
 
     # args for dataset and dataloader options
-    parser.add_argument("--train_source_folder", type=str,
-                        default="/mnt_ljw/fro2ffpe_projects/data/tcga_lung_patch/trainA/patches")
-    parser.add_argument("--train_target_folder", type=str,
-                        default="/mnt_ljw/fro2ffpe_projects/data/tcga_lung_patch/trainB/patches")
-    parser.add_argument("--valid_source_folder", type=str,
-                        default="/mnt_ljw/fro2ffpe_projects/data/fid_reference_b2a/")
-    parser.add_argument("--valid_target_folder", type=str, default="/mnt_ljw/fro2ffpe_projects/data/fid_reference_b2a/")
+    parser.add_argument("--train_source_folder", type=str, default="TRAIN_FF_PATH")
+    parser.add_argument("--train_target_folder", type=str, default="TRAIN_FFPE_PATH")
+    parser.add_argument("--valid_source_folder", type=str, default="VALID_FF_PATH")
+    parser.add_argument("--valid_target_folder", type=str, default="VALID_FFPE_PATH")
     parser.add_argument("--fixed_caption_src", type=str, default="frozen section")
     parser.add_argument("--fixed_caption_tgt", type=str, default="paraffin section")
     parser.add_argument("--train_img_prep", type=str, default='no_resize')

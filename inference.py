@@ -11,7 +11,7 @@ from diffusion_ffpe.my_utils import build_transform
 
 def parse_args_inference():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--img_path', type=str, default="TEST_PATH")
+    parser.add_argument('--img_path', type=str, default="TEST_FF_PATH")
     parser.add_argument('--model_path', type=str, default="stabilityai/sd-turbo")
     parser.add_argument('--pretrained_path', type=str, default="./checkpoints/model.pkl")
     parser.add_argument('--output_path', type=str, default='output', help='the directory to save the output')
