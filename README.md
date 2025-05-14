@@ -72,10 +72,12 @@ If our work is useful for your research, please consider citing:
 
 ```
 @inproceedings{zhang2024leveraging,
-      author={Qilai Zhang and Jiawen Li and Peiran Liao and Jiali Hu and Tian Guan and Anjia Han and Yonghong He},
-      title={Leveraging Pre-trained Models for FF-to-FFPE Histopathological Image Translation}, 
-      booktitle={arXiv preprint arXiv:2406.18054},
-      year={2024}
+  title={Leveraging Pre-trained Models for FF-to-FFPE Histopathological Image Translation},
+  author={Zhang, Qilai and Li, Jiawen and Liao, Peiran and Hu, Jiali and Guan, Tian and Han, Anjia and He, Yonghong},
+  booktitle={2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)},
+  pages={3993--3996},
+  year={2024},
+  organization={IEEE}
 }
 ```
 

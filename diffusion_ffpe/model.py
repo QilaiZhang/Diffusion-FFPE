@@ -200,15 +200,15 @@ class VAE_encode_multiview(nn.Module):
             _vae_patch = self.vae_b2a_patch
 
         h1 = _vae.encoder(x)
-        _, _c1, _h1, _w1 = x.shape
+        batch_size, _c1, _h1, _w1 = x.shape
         _, _c2, _h2, _w2 = h1.shape
 
         x_patch = x.unfold(2, _h1//patch_num, _w1//patch_num).unfold(3, _h1//patch_num, _w1//patch_num)
         x_patch = x_patch.permute(0, 2, 3, 1, 4, 5).reshape(-1, _c1, _h1//patch_num, _w1//patch_num)
 
         h2 = _vae_patch.encoder(x_patch)
-        h2 = h2.view(patch_num, patch_num, _c2, _h2//patch_num, _w2//patch_num).permute(2, 0, 3, 1, 4)
-        h2 = h2.contiguous().view(_c2, _h2, _w2).unsqueeze(0)
+        h2 = h2.view(batch_size, patch_num, patch_num, _c2, _h2//patch_num, _w2//patch_num).permute(0, 3, 1, 4, 2, 5)
+        h2 = h2.contiguous().view(batch_size, _c2, _h2, _w2)
 
         h = h1 + h2
 
@@ -257,10 +257,11 @@ class VAE_decode_multiview(nn.Module):
         assert _vae_patch.encoder.current_down_blocks is not None
 
         skip = []
+        batch_size, _, _, _ = x.shape
         for h1, h2 in zip(_vae.encoder.current_down_blocks, _vae_patch.encoder.current_down_blocks):
             _, c, h, w = h1.shape
-            h2 = h2.view(patch_num, patch_num, c, h//patch_num, w//patch_num).permute(2, 0, 3, 1, 4)
-            h2 = h2.contiguous().view(c, h, w).unsqueeze(0)
+            h2 = h2.view(batch_size, patch_num, patch_num, c, h//patch_num, w//patch_num).permute(0, 3, 1, 4, 2, 5)
+            h2 = h2.contiguous().view(batch_size, c, h, w)
             skip.append(h1+h2)
 
         _vae.decoder.incoming_skip_acts = skip
