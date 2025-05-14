@@ -4,7 +4,7 @@
 
 ![](./assets/Overview.png)
 
-[Paper](http://arxiv.org/abs/2406.18054) | [Models](https://cloud.tsinghua.edu.cn/d/2892cd01a94e49519068/) 
+[Paper](https://ieeexplore.ieee.org/abstract/document/10822745/) | [Models](https://cloud.tsinghua.edu.cn/d/2892cd01a94e49519068/) 
 
 ### Prerequisites
 
